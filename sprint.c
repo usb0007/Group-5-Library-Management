@@ -5,7 +5,7 @@
 #include "sp1.h"
 
 void display();
-//int main(){
+
     	int ch;
  	
     	void display(){
@@ -13,7 +13,11 @@ void display();
     	while(1){
     
         //system("clear");
-        printf("\n\n\n<===== Library Management System =====>\n");
+        printf("\n\n\n");
+        printf("---------------------------------------------------------------------------------------\n");
+    	printf("<============================= Library Management System =============================>\n");
+   	printf("---------------------------------------------------------------------------------------\n\n");
+        
         printf("1.Add Book\n");
         printf("2.Books List\n");
         printf("3.Remove Book\n");
@@ -51,11 +55,9 @@ void display();
             printf("Invalid Choice...\n\n");
 
         }
-        //printf("Press Any Key To Continue...");
+        
         
     }
 }
-    //return 0;
-//}
-
+ 
 

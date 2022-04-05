@@ -1,7 +1,12 @@
 #include<stdio.h>
-
 #include<string.h>
 #include "sprint.c"
+
+struct user{
+    char userId[25];
+    char password[25];
+};
+
 int main()
 {
 	system("clear");
@@ -46,36 +51,52 @@ int main()
     
 
     FILE *fptr;
-	fptr=fopen("log.txt","r");
+    	struct user u;
 	int n=1;
-	char userId[25], password[25], id[25], p[25];
-	fscanf(fptr,"%s %s",userId,password);
-	
+	char id[25], p[25];
+	fptr=fopen("log.txt","r");
+	fscanf(fptr,"%s %s",u.userId,u.password);
+	printf("\n\n\n");
+	printf ("--------------------------------------------------------------------------------------\n");
+    	printf("\t\t\t\tWelcome to Login Page\n");
+   	printf ("--------------------------------------------------------------------------------------\n\n");
 	do
 	{
     		printf("\nEnter UserId : ");
-        	gets(id);
+    		scanf(" %s", id);
+        	//gets(id);
+        	//fgets( id, sizeof( id ), stdin );
 
         	printf("\nEnter Password : ");
-        	gets(p);
+        	scanf(" %s", p);
+        	//gets(p);
+        	//fgets( p, sizeof( p ), stdin );
+        	
         
-        	if((strcmp(userId,id)==0)&&(strcmp(password,p)==0))
+        	if((strcmp(u.userId,id)==0)&&(strcmp(u.password,p)==0))
         	{
         		printf("\nSucessfully Logged In");
            		display();
         	}
         	else 
         	{
-           		printf("\nWrong Password, try again later\n",5-n);
+           		printf("\nWrong UserId or Password, try again...\n ");
+           		printf("\nOnly %d attempts left. Please use Proper Login Credentials for Login.\n",5-n);
+           		printf("\n===================================================================================");
             		n++;
+            		printf("\n\n");
          	}
+         	printf("\n\n");
          	if(n>5)
          	{
-          		printf("\nAccess Denied\n");
+          		printf("\nAccess Denied... You have Exceeded the Maximum Login try Please Try again later.\n\n");
+          		printf("\n\n");
   	
           	}
 
        }while (n<=5);
+       
+       fclose(fptr);
 
 return 0;
 }
